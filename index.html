@@ -23,9 +23,10 @@
 
   nav.site{position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50}
   nav.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{display:flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink)}
-  .logo img{height:26px;display:block}
-  .logo .ugc{font:800 21px/1 var(--sans);letter-spacing:-.04em;color:var(--lav-deep);padding-top:2px}
+  .logo{--h:26px;display:inline-flex;align-items:flex-start;text-decoration:none;line-height:0;position:relative}
+  .logo img{height:var(--h);width:auto;display:block}
+  .logo .ugc{height:calc(var(--h) * 0.55233);width:auto;display:block;
+    margin-left:calc(var(--h) * 0.135);margin-top:calc(var(--h) * 0.25)}
   .navlinks{display:flex;gap:26px;align-items:center}
   .navlinks a{color:var(--muted);text-decoration:none;font:500 14px var(--sans)}
   .navlinks a:hover{color:var(--ink)}
@@ -34,6 +35,28 @@
   .btn-ink{background:var(--ink);color:#fff}
   .btn-lav{background:var(--lav);color:#fff}
   .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-text{background:transparent;color:var(--ink);padding:11px 8px}
+  .btn-text:hover{transform:none;color:var(--lav-deep)}
+  .auth{display:flex;align-items:center;gap:8px}
+
+  /* ---------- auth modal ---------- */
+  .scrim{position:fixed;inset:0;background:rgba(13,13,15,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+  .scrim.on{display:flex}
+  .amodal{background:#fff;border-radius:22px;max-width:430px;width:100%;padding:32px;box-shadow:0 30px 90px rgba(13,13,15,.3);position:relative}
+  .amodal .x{position:absolute;top:18px;right:22px;font:400 22px var(--sans);color:#b3b0c4;cursor:pointer;line-height:1}
+  .amodal .mh{text-align:center;margin-bottom:24px}
+  .amodal .mh .logo{--h:28px;margin:0 auto 18px}
+  .amodal h3{font:400 26px var(--serif)}
+  .amodal .msub{font:400 14px var(--sans);color:var(--muted);margin-top:6px}
+  .roles{display:grid;gap:12px}
+  .role{border:1px solid var(--line);border-radius:14px;padding:17px 19px;display:flex;align-items:center;gap:14px;cursor:pointer;text-decoration:none;color:var(--ink)}
+  .role:hover{border-color:var(--lav);background:var(--lav-tint)}
+  .role .ic{width:40px;height:40px;border-radius:11px;background:var(--lav-tint);border:1px solid var(--lav-soft);display:flex;align-items:center;justify-content:center;font:400 18px var(--serif);color:var(--lav-deep);flex-shrink:0}
+  .role b{font:600 15px var(--sans);display:block}
+  .role span{font:400 12.5px var(--sans);color:var(--muted)}
+  .role .arr{margin-left:auto;color:#c6c3d6;font-size:18px}
+  .amodal .alt{text-align:center;font:400 13.5px var(--sans);color:var(--muted);margin-top:20px}
+  .amodal .alt a{color:var(--lav-deep);font-weight:600;text-decoration:none;cursor:pointer}
   .btn-lg{padding:15px 28px;font-size:15px;border-radius:12px}
   .btn[disabled]{opacity:.55;cursor:default;transform:none}
 
@@ -226,14 +249,17 @@
 
 <nav class="site">
   <div class="wrap">
-    <a class="logo" href="#/"><img class="yl" alt="yapp"><span class="ugc">ugc</span></a>
+    <a class="logo" href="#/"><img class="yl" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
     <div class="navlinks">
       <a href="#/" data-scroll="how">How it works</a>
       <a href="#/ledger">Likeness Ledger</a>
       <a href="#/creator">For creators</a>
       <a href="#/" data-scroll="pricing">Pricing</a>
     </div>
-    <a class="btn btn-ink" href="#/brief">Send your brief</a>
+    <div class="auth">
+      <a class="btn btn-text" onclick="openAuth('in')">Sign in</a>
+      <a class="btn btn-ink" onclick="openAuth('up')">Get started</a>
+    </div>
   </div>
 </nav>
 
@@ -547,7 +573,7 @@
 <footer class="site">
   <div class="wrap">
     <div>
-      <a class="logo" href="#/"><img class="yl" alt="yapp"><span class="ugc">ugc</span></a>
+      <a class="logo" href="#/"><img class="yl" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
       <p class="fine">A Yapp company<br>© 2026 Yapp</p>
     </div>
     <div class="cols">
@@ -558,7 +584,44 @@
   </div>
 </footer>
 
+<div class="scrim" id="ascrim" onclick="if(event.target===this)closeAuth()">
+  <div class="amodal">
+    <span class="x" onclick="closeAuth()">×</span>
+    <div class="mh">
+      <span class="logo"><img class="yl" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></span>
+      <h3 id="atitle">Create your account</h3>
+      <p class="msub" id="asub">Which side of the platform are you on?</p>
+    </div>
+    <div class="roles">
+      <a class="role" onclick="authGo('#/brief')">
+        <div class="ic">B</div>
+        <div><b>I'm a brand</b><span>Send briefs, get content back</span></div>
+        <span class="arr">→</span>
+      </a>
+      <a class="role" onclick="authGo('#/creator')">
+        <div class="ic">C</div>
+        <div><b>I'm a creator</b><span>License your face, earn per use</span></div>
+        <span class="arr">→</span>
+      </a>
+    </div>
+    <p class="alt" id="aalt">Already have an account? <a onclick="openAuth('in')">Sign in</a></p>
+  </div>
+</div>
+
 <script>
+/* ---------- auth modal ---------- */
+function openAuth(mode){
+  document.getElementById('atitle').textContent = mode==='in' ? 'Welcome back' : 'Create your account';
+  document.getElementById('asub').textContent   = mode==='in' ? 'Sign in to your workspace.' : "Which side of the platform are you on?";
+  document.getElementById('aalt').innerHTML     = mode==='in'
+    ? 'New here? <a onclick="openAuth(\'up\')">Create an account</a>'
+    : 'Already have an account? <a onclick="openAuth(\'in\')">Sign in</a>';
+  document.getElementById('ascrim').classList.add('on');
+}
+function closeAuth(){document.getElementById('ascrim').classList.remove('on')}
+function authGo(hash){closeAuth();location.hash=hash}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAuth()});
+
 const LOGO='logo.png';
 document.querySelectorAll('img.yl').forEach(i=>i.src=LOGO);
 
