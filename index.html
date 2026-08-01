@@ -20,6 +20,7 @@
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --statoff:65px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -45,8 +46,8 @@ img{display:block}
 .btn-s{border-color:#e2ddf8;background:#fff;color:var(--ink)} .btn-s:hover{border-color:#c9bffb}
 
 /* ---------- ink top ---------- */
-.top{background:var(--ink2);color:#fff;position:relative;overflow:hidden}
-.ribwrap{position:absolute;top:-140px;right:-300px;width:1300px;height:1000px;z-index:0;pointer-events:none}
+.top{background:var(--ink2);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.ribwrap{position:absolute;top:-140px;right:-300px;width:1300px;height:1000px;z-index:0;pointer-events:none;transform:translateZ(0);backface-visibility:hidden;will-change:transform}
 .ribwrap svg{position:absolute;inset:0;width:100%;height:100%}
 nav{position:relative;z-index:20}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
@@ -55,7 +56,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .nl a:hover{color:#fff}
 .navr{display:flex;gap:8px;align-items:center}
 .hero{position:relative;z-index:10}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:26px 0 86px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start;padding:26px 0 86px}
 .badge{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);
        border-radius:999px;padding:6px 14px;font:500 12.5px var(--sans);color:rgba(255,255,255,.8)}
 .badge b{color:#fff;font-weight:600}
@@ -75,7 +76,7 @@ h1 em{font-style:italic;color:var(--lavlt)}
 .chip:hover{border-color:#fff;color:#fff}
 .badge .ylg{display:inline-flex;align-items:center;height:15px}
 .badge .ylg img{height:15px;width:auto;filter:brightness(0) invert(1)}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:var(--statoff)}
 .stat{background:rgba(255,255,255,.07);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px 20px}
 .stat .n{font:400 34px var(--serif);color:#fff}
 .stat .l{font:400 12.5px var(--sans);color:rgba(255,255,255,.6);margin-top:2px}
@@ -114,7 +115,7 @@ h1 em{font-style:italic;color:var(--lavlt)}
 .pcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;animation:rise .35s ease both;transition:transform .15s,box-shadow .15s}
 .pcard:hover{transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(88,42,240,.55)}
 .pcard .ph{aspect-ratio:1/1;overflow:hidden}
-.pcard .ph svg{width:100%;height:100%;display:block}
+.pcard .ph svg,.pcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .pcard .pi{padding:10px 11px 12px}
 .pcard .pi b{font:600 13px var(--sans);display:block}
 .pcard .pi .hd{font:400 11px var(--mono);color:var(--faint);display:block;margin-top:2px}
@@ -122,7 +123,7 @@ h1 em{font-style:italic;color:var(--lavlt)}
 .pcard .fo{font:500 11px var(--mono);color:var(--body)}
 .pcard .mt{font:600 10.5px var(--mono);color:var(--lav);background:#f2effc;padding:2px 7px;border-radius:999px;white-space:nowrap}
 .who2 .av{overflow:hidden}
-.who2 .av svg{width:100%;height:100%;display:block}
+.who2 .av svg,.who2 .av img{width:100%;height:100%;object-fit:cover;display:block}
 .gate{margin-top:15px;padding-top:15px;border-top:1px solid var(--line2);display:none}
 .gate.on{display:block}
 .gate p{font-size:13px;color:var(--body);margin-bottom:10px}
@@ -141,6 +142,7 @@ section.pale{background:#faf9ff}
 .lab{font:500 11px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--lav);margin-bottom:14px}
 h2{font:400 clamp(30px,3.5vw,46px)/1.07 var(--serif);letter-spacing:-.02em;max-width:19ch}
 h2 em{font-style:italic;color:var(--lav)}
+h2.wide{max-width:none;white-space:nowrap}
 .sub{font-size:15.5px;color:var(--body);max-width:56ch;margin-top:12px}
 .four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
 .fc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px}
@@ -149,25 +151,15 @@ h2 em{font-style:italic;color:var(--lav)}
 .fc h3{font:600 15.5px var(--sans)}
 .fc p{font-size:14px;color:var(--body);margin-top:9px}
 
-.feedwrap{display:grid;grid-template-columns:250px 1fr;gap:32px;margin-top:40px;align-items:start}
-.side{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
-.side h4{font:600 14px var(--sans);margin-bottom:14px}
-.side div{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:13.5px;color:var(--body)}
-.side i{width:14px;height:14px;border-radius:50%;border:1.5px solid #ddd8f4;display:inline-block;flex-shrink:0}
-.feed{display:flex;flex-direction:column;gap:12px}
-.fitem{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:18px}
-.fitem .body{flex:1;min-width:0}
-.fitem .cat{display:inline-flex;font:500 11.5px var(--sans);background:#f2effc;color:var(--body);padding:3px 10px;border-radius:6px}
-.fitem h5{font:600 16px var(--sans);margin:9px 0 7px}
-.fitem .mt{font:400 12px var(--mono);color:var(--faint);display:flex;gap:16px;flex-wrap:wrap}
-.starb{display:inline-flex;align-items:center;justify-content:center;font:600 13.5px var(--sans);color:#fff;background:var(--lav);
-       width:64px;height:64px;flex-shrink:0;
-       clip-path:polygon(50% 0,60% 9%,73% 4%,78% 17%,92% 17%,92% 31%,100% 40%,93% 50%,100% 60%,92% 69%,92% 83%,78% 83%,73% 96%,60% 91%,50% 100%,40% 91%,27% 96%,22% 83%,8% 83%,8% 69%,0 60%,7% 50%,0 40%,8% 31%,8% 17%,22% 17%,27% 4%,40% 9%)}
 .note{font:400 12px var(--mono);color:var(--faint);margin-top:18px}
 
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
-.tile{border-radius:14px;position:relative;aspect-ratio:9/12;padding:15px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.tile .who{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.24);display:flex;align-items:center;justify-content:center;font:600 12px var(--sans);color:#fff}
+.tile{border-radius:14px;position:relative;aspect-ratio:9/12;padding:15px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:#141320}
+.tile>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;z-index:0}
+.tile:after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,9,16,.44) 0%,rgba(10,9,16,0) 34%,rgba(10,9,16,.12) 58%,rgba(10,9,16,.86) 100%)}
+.tile>*:not(img.bg){position:relative;z-index:2}
+.tile .who{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.24);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;font:600 12px var(--sans);color:#fff}
 .tile .meta b{display:block;color:#fff;font-size:13.5px}
 .tile .meta span{display:block;font:400 10.5px var(--mono);color:rgba(255,255,255,.72);margin-top:3px}
 .tile .pl{position:absolute;top:15px;right:15px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
@@ -215,7 +207,7 @@ td.m{font-family:var(--mono);font-size:12.5px;color:var(--body)}
 .faq details[open] summary:after{content:"−"}
 .faq p{color:var(--body);font-size:14.5px;max-width:66ch;padding-bottom:18px}
 
-.close{background:var(--ink2);color:#fff;position:relative;overflow:hidden}
+.close{background:var(--ink2);color:#fff;position:relative;overflow:hidden;isolation:isolate}
 .close .wrap{position:relative;z-index:10;padding:96px 0;text-align:center}
 .close h2{margin:0 auto;max-width:16ch;color:#fff}
 .close h2 em{color:var(--lavlt)}
@@ -253,11 +245,11 @@ footer a:hover{color:#fff}
 
 @media(max-width:980px){
   .hero .wrap,.two{grid-template-columns:1fr;gap:36px}
+  .stats{margin-top:0}
   .hero .wrap{padding-bottom:64px}
   .pgrid{grid-template-columns:1fr}
   .pl2{border-right:0;border-bottom:1px solid var(--line2)}
   .four{grid-template-columns:1fr 1fr}
-  .feedwrap{grid-template-columns:1fr}
   .tiles{grid-template-columns:repeat(2,1fr)}
   .prices,.cast{grid-template-columns:1fr}
   .nl{display:none}
@@ -349,7 +341,7 @@ footer a:hover{color:#fff}
 
 <section id="how"><div class="wrap">
   <div class="lab">How it works</div>
-  <h2>Four steps. One of them is <em>yours</em>.</h2>
+  <h2 class="wide">Four steps. One of them is <em>yours</em>.</h2>
   <div class="four">
     <div class="fc"><div class="hd"><span class="n">01</span><h3>Post a brief</h3></div><p>Describe the campaign, the audience and the platform. A paragraph is enough.</p></div>
     <div class="fc"><div class="hd"><span class="n">02</span><h3>We cast</h3></div><p>Creators matched on audience overlap, vertical and past hook rate — not follower count.</p></div>
@@ -358,36 +350,14 @@ footer a:hover{color:#fff}
   </div>
 </div></section>
 
-<section class="pale"><div class="wrap">
-  <div class="lab">Live now</div>
-  <h2>Briefs in production <em>today</em>.</h2>
-  <div class="feedwrap">
-    <div class="side"><h4>Categories</h4>
-      <div><i></i>Beauty &amp; skincare</div><div><i></i>Health &amp; wellness</div><div><i></i>Fintech &amp; apps</div>
-      <div><i></i>Food &amp; beverage</div><div><i></i>Fashion</div>
-    </div>
-    <div class="feed">
-      <div class="fitem"><div class="body"><span class="cat">Content &amp; Media</span><h5>Hydration supplement — TikTok Spark Ads</h5>
-        <div class="mt"><span>2h ago</span><span>15 min to deliver</span><span>cast: Maya S. + 2</span></div></div><span class="starb">60</span></div>
-      <div class="fitem"><div class="body"><span class="cat">Fintech</span><h5>Cashback feature launch — hook testing</h5>
-        <div class="mt"><span>5h ago</span><span>15 min to deliver</span><span>cast: Jake R. + 1</span></div></div><span class="starb">40</span></div>
-      <div class="fitem"><div class="body"><span class="cat">Beauty</span><h5>Serum relaunch — before/after angles</h5>
-        <div class="mt"><span>1d ago</span><span>12 min to deliver</span><span>cast: Camila T.</span></div></div><span class="starb">32</span></div>
-      <div class="fitem"><div class="body"><span class="cat">Food &amp; Bev</span><h5>Meal kit — street interview style</h5>
-        <div class="mt"><span>1d ago</span><span>15 min to deliver</span><span>cast: Leon K. + 2</span></div></div><span class="starb">56</span></div>
-    </div>
-  </div>
-  <p class="note">// sample feed — the badge is the video count on that brief.</p>
-</div></section>
-
 <section><div class="wrap">
   <div class="lab">The output</div>
   <h2>Real faces. Licensed. <em>Multiplied</em>.</h2>
   <div class="tiles">
-    <div class="tile" style="background:#582af0"><div class="who">M</div><div class="pl"></div><div class="meta"><b>Skincare launch</b><span>Maya S. · 32 variants · english</span></div></div>
-    <div class="tile" style="background:#0f0e13"><div class="who">J</div><div class="pl"></div><div class="meta"><b>Fintech feature</b><span>Jake R. · 48 variants · english</span></div></div>
-    <div class="tile" style="background:#e0a137"><div class="who">C</div><div class="pl"></div><div class="meta"><b>Travel promo</b><span>Camila T. · 24 variants · spanish</span></div></div>
-    <div class="tile" style="background:#1f8a70"><div class="who">L</div><div class="pl"></div><div class="meta"><b>Food delivery</b><span>Leon K. · 56 variants · german</span></div></div>
+    <div class="tile"><img class="bg" src="f/maya_t.jpg" alt="" loading="lazy"><div class="who">M</div><div class="pl"></div><div class="meta"><b>Skincare launch</b><span>Maya S. · 32 variants · english</span></div></div>
+    <div class="tile"><img class="bg" src="f/jake_t.jpg" alt="" loading="lazy"><div class="who">J</div><div class="pl"></div><div class="meta"><b>Fintech feature</b><span>Jake R. · 48 variants · english</span></div></div>
+    <div class="tile"><img class="bg" src="f/camila_t.jpg" alt="" loading="lazy"><div class="who">C</div><div class="pl"></div><div class="meta"><b>Travel promo</b><span>Camila T. · 24 variants · spanish</span></div></div>
+    <div class="tile"><img class="bg" src="f/leon_t.jpg" alt="" loading="lazy"><div class="who">L</div><div class="pl"></div><div class="meta"><b>Food delivery</b><span>Leon K. · 56 variants · german</span></div></div>
   </div>
 </div></section>
 
@@ -398,66 +368,11 @@ footer a:hover{color:#fff}
   <div class="tblwrap"><table>
     <thead><tr><th>License</th><th>Creator</th><th>Status</th><th>Renders 30d</th><th>Platforms</th><th>Consent</th></tr></thead>
     <tbody>
-      <tr><td class="m">YL-0007</td><td><span class="who2"><span class="av" style="background:#582af0"><svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M8,110 C8,86 28,77 50,77 C72,77 92,86 92,110 Z" fill="#582af0"/>
-
-<rect x="43" y="58" width="14" height="24" rx="7" fill="#e0ae86"/>
-<circle cx="27" cy="50" r="4.4" fill="#e0ae86"/><circle cx="73" cy="50" r="4.4" fill="#e0ae86"/>
-<ellipse cx="50" cy="47" rx="23" ry="27" fill="#f2c9a8"/>
-<path d="M22,52 C22,26 34,16 50,16 C66,16 78,26 78,52 L78,72 C78,58 76,46 73,42 C69,34 62,31 50,31 C38,31 31,34 27,42 C24,46 22,58 22,72 Z" fill="#2b1b16"/>
-<path d="M39,42 Q43,39.5 47,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M53,42 Q57,39.5 61,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="43" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/><ellipse cx="57" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/>
-<path d="M43,59 Q50,64.5 57,59" stroke="#2a2038" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-</svg></span>Maya S.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">212</td><td class="m">tiktok, reels</td><td class="m">2026-03 · on file</td></tr>
-      <tr><td class="m">YL-0012</td><td><span class="who2"><span class="av" style="background:#0f0e13"><svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M8,110 C8,86 28,77 50,77 C72,77 92,86 92,110 Z" fill="#1f8a70"/>
-
-<rect x="43" y="58" width="14" height="24" rx="7" fill="#d29a6c"/>
-<circle cx="27" cy="50" r="4.4" fill="#d29a6c"/><circle cx="73" cy="50" r="4.4" fill="#d29a6c"/>
-<ellipse cx="50" cy="47" rx="23" ry="27" fill="#e9b183"/>
-<path d="M25,48 C25,26 35,17 50,17 C65,17 75,26 75,48 C75,40 70,33 66,31 C60,36 40,36 34,31 C30,33 25,40 25,48 Z" fill="#231a14"/>
-<path d="M39,42 Q43,39.5 47,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M53,42 Q57,39.5 61,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="43" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/><ellipse cx="57" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/>
-<path d="M43,59 Q50,64.5 57,59" stroke="#2a2038" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-</svg></span>Jake R.</span></td><td><span class="pill a">active</span></td><td class="m">164</td><td class="m">tiktok, shorts</td><td class="m">2026-04 · on file</td></tr>
-      <tr><td class="m">YL-0018</td><td><span class="who2"><span class="av" style="background:#7a5cf5"><svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M8,110 C8,86 28,77 50,77 C72,77 92,86 92,110 Z" fill="#e0a137"/>
-
-<rect x="43" y="58" width="14" height="24" rx="7" fill="#b3774f"/>
-<circle cx="27" cy="50" r="4.4" fill="#b3774f"/><circle cx="73" cy="50" r="4.4" fill="#b3774f"/>
-<ellipse cx="50" cy="47" rx="23" ry="27" fill="#c98d63"/>
-<g fill="#2a1710"><circle cx="50" cy="20" r="11"/><circle cx="36" cy="24" r="10"/><circle cx="64" cy="24" r="10"/><circle cx="28" cy="34" r="9"/><circle cx="72" cy="34" r="9"/><circle cx="26" cy="44" r="7"/><circle cx="74" cy="44" r="7"/></g>
-<path d="M39,42 Q43,39.5 47,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M53,42 Q57,39.5 61,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="43" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/><ellipse cx="57" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/>
-<path d="M43,59 Q50,64.5 57,59" stroke="#2a2038" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-</svg></span>Camila T.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">147</td><td class="m">tiktok, reels</td><td class="m">2026-04 · on file</td></tr>
-      <tr><td class="m">YL-0023</td><td><span class="who2"><span class="av" style="background:#e0a137"><svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M8,110 C8,86 28,77 50,77 C72,77 92,86 92,110 Z" fill="#3b3550"/>
-
-<rect x="43" y="58" width="14" height="24" rx="7" fill="#e2bb96"/>
-<circle cx="27" cy="50" r="4.4" fill="#e2bb96"/><circle cx="73" cy="50" r="4.4" fill="#e2bb96"/>
-<ellipse cx="50" cy="47" rx="23" ry="27" fill="#f4d3b4"/>
-<path d="M25,48 C25,26 35,17 50,17 C65,17 75,26 75,48 C75,40 70,33 66,31 C60,36 40,36 34,31 C30,33 25,40 25,48 Z" fill="#8a5a2b"/>
-<path d="M39,42 Q43,39.5 47,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M53,42 Q57,39.5 61,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="43" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/><ellipse cx="57" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/>
-<path d="M43,59 Q50,64.5 57,59" stroke="#2a2038" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-</svg></span>Leon K.</span></td><td><span class="pill p">paused by creator</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-05 · on file</td></tr>
-      <tr><td class="m">YL-0009</td><td><span class="who2"><span class="av" style="background:#8a88a0"><svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M8,110 C8,86 28,77 50,77 C72,77 92,86 92,110 Z" fill="#2f6fd0"/>
-
-<rect x="43" y="58" width="14" height="24" rx="7" fill="#c4906a"/>
-<circle cx="27" cy="50" r="4.4" fill="#c4906a"/><circle cx="73" cy="50" r="4.4" fill="#c4906a"/>
-<ellipse cx="50" cy="47" rx="23" ry="27" fill="#dba97e"/>
-<circle cx="50" cy="14" r="9" fill="#1e1512"/><path d="M25,46 C25,25 35,17 50,17 C65,17 75,25 75,46 C75,38 71,32 67,30 C60,35 40,35 33,30 C29,32 25,38 25,46 Z" fill="#1e1512"/>
-<path d="M39,42 Q43,39.5 47,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M53,42 Q57,39.5 61,42" stroke="#00000022" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="43" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/><ellipse cx="57" cy="48" rx="2.5" ry="3.1" fill="#2a2038"/>
-<path d="M43,59 Q50,64.5 57,59" stroke="#2a2038" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-</svg></span>Dan W.</span></td><td><span class="pill r">revoked</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-03 · ended</td></tr>
+      <tr><td class="m">YL-0007</td><td><span class="who2"><span class="av"><img src="f/maya.jpg" alt="" loading="lazy"></span>Maya S.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">212</td><td class="m">tiktok, reels</td><td class="m">2026-03 · on file</td></tr>
+      <tr><td class="m">YL-0012</td><td><span class="who2"><span class="av"><img src="f/jake.jpg" alt="" loading="lazy"></span>Jake R.</span></td><td><span class="pill a">active</span></td><td class="m">164</td><td class="m">tiktok, shorts</td><td class="m">2026-04 · on file</td></tr>
+      <tr><td class="m">YL-0018</td><td><span class="who2"><span class="av"><img src="f/camila.jpg" alt="" loading="lazy"></span>Camila T.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">147</td><td class="m">tiktok, reels</td><td class="m">2026-04 · on file</td></tr>
+      <tr><td class="m">YL-0023</td><td><span class="who2"><span class="av"><img src="f/leon.jpg" alt="" loading="lazy"></span>Leon K.</span></td><td><span class="pill p">paused by creator</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-05 · on file</td></tr>
+      <tr><td class="m">YL-0009</td><td><span class="who2"><span class="av"><img src="f/rio.jpg" alt="" loading="lazy"></span>Rio P.</span></td><td><span class="pill r">revoked</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-03 · ended</td></tr>
     </tbody>
   </table></div>
   <p class="note">// sample rows. every delivered file carries its license id and an AI-content label.</p>
@@ -516,7 +431,7 @@ footer a:hover{color:#fff}
 </div></section>
 
 <div class="close">
-  <div class="ribwrap" style="top:-300px;right:-220px;opacity:.85"><svg class="rib" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <div class="ribwrap" style="top:-300px;right:-220px"><svg class="rib" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 <defs>
 <filter id="b1" x="-12%" y="-12%" width="124%" height="124%"><feGaussianBlur stdDeviation="12"/></filter>
 <filter id="b2" x="-6%" y="-6%" width="112%" height="112%"><feGaussianBlur stdDeviation="1.1"/></filter>
@@ -531,7 +446,7 @@ footer a:hover{color:#fff}
     <h2>Send one brief. See what <em>comes back</em>.</h2>
     <p class="sub">Free, takes a minute. We onboard five brands a week.</p>
     <div class="row">
-      <a class="btn btn-w btn-lg" onclick="focusBrief()">Analyze my brief</a>
+      <a class="btn btn-w btn-lg" onclick="focusBrief()">Submit my brief</a>
       <a class="btn btn-o btn-lg" onclick="openCreator()">I'm a creator</a>
     </div>
   </div>
@@ -540,7 +455,7 @@ footer a:hover{color:#fff}
 <footer><div class="wrap">
   <a class="logo inv" style="--h:20px" href="#"><img src="logo.png" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
   <div class="fl"><a href="#how">How it works</a><a href="#ledger">Likeness Ledger</a><a href="#creators">Creators</a><a href="#pricing">Pricing</a><a href="https://yapp.ink" target="_blank" rel="noopener">Yapp</a></div>
-  <div class="cr">© 2026 Yapp</div>
+  <div class="cr">© 2026 Yapp · creator faces shown are AI-generated placeholders</div>
 </div></footer>
 
 <!-- auth -->
@@ -651,7 +566,7 @@ function run(){
     if(i===3 && document.getElementById('castwrap').style.display==='none'){
       document.getElementById('castwrap').style.display='block';
       document.getElementById('cast').innerHTML=d.v.c.map(function(k,x){var c=P[k];
-        return '<div class="pcard" style="animation-delay:'+(x*90)+'ms"><div class="ph">'+AV[c.a]+'</div><div class="pi"><b>'+c.n+'</b>'
+        return '<div class="pcard" style="animation-delay:'+(x*90)+'ms"><div class="ph"><img src="f/'+k+'.jpg" alt="" loading="lazy"></div><div class="pi"><b>'+c.n+'</b>'
           +'<span class="hd">'+c.h+'</span><div class="rw"><span class="fo">'+c.f+'</span><span class="mt">'+[96,93,89][x]+'% match</span></div></div></div>';}).join('');
     }
     if(i<lines.length){i++;setTimeout(tick,i===4?900:1000)}
