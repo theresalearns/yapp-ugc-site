@@ -125,6 +125,7 @@ h1 em{font-style:italic;color:var(--lavlt)}
 .gate{margin-top:15px;padding-top:15px;border-top:1px solid var(--line2);display:none}
 .gate.on{display:block}
 .gate p{font-size:13px;color:var(--body);margin-bottom:10px}
+.gate p.demo{font:400 12.5px var(--mono);color:var(--faint);margin:0}
 .gate form{display:flex;gap:8px;flex-wrap:wrap}
 .gate input{flex:1;min-width:180px;border:1px solid #e2ddf8;border-radius:999px;height:40px;padding:0 15px;font:400 13.5px var(--sans);outline:none}
 .gate input:focus{border-color:var(--lav2)}
@@ -321,15 +322,7 @@ footer a:hover{color:#fff}
       </div>
       <div class="say" id="log"></div>
       <div id="castwrap" style="display:none"><div class="cast" id="cast"></div></div>
-      <div class="gate" id="gate">
-        <p>Plan ready — 40 hook variations across 3 avatars. Where should we send it?</p>
-        <form onsubmit="return sendPlan(event)">
-          <input type="email" id="bemail" placeholder="you@company.com" required>
-          <button class="btn btn-l" type="submit" id="sb">Send plan</button>
-        </form>
-        <div class="err" id="berr">Couldn't send that — try again.</div>
-      </div>
-      <div class="ok" id="bok"><b>You're in.</b> Your brief is with the producer — expect the full plan by email within 24 hours.<a class="btn btn-l" style="height:40px;font-size:13px;margin-top:12px" onclick="toFlow(1)">Open your plan &rarr;</a></div>
+      <div class="gate" id="gate"><p class="demo">// sample run. Type your own brief in the box above to start a real one.</p></div>
     </div>
   </div>
 </div></div>
@@ -522,8 +515,6 @@ function run(){
   const btn=document.getElementById('run'); btn.disabled=true;
   if(typed) document.getElementById('bq').textContent=typed;
   document.getElementById('gate').classList.remove('on');
-  document.getElementById('bok').classList.remove('on');
-  document.getElementById('berr').classList.remove('on');
   document.getElementById('castwrap').style.display='none';
   document.getElementById('pstate').textContent='reading your brief…';
   document.getElementById('det').classList.remove('on');
@@ -560,22 +551,6 @@ function run(){
       setTimeout(function(){document.getElementById('gate').classList.add('on');btn.disabled=false;busy=false;},400);
     }
   })();
-}
-async function sendPlan(e){
-  e.preventDefault();
-  const b=document.getElementById('sb'), em=document.getElementById('bemail').value;
-  const brief=(document.getElementById('bt').value.trim()||SEED);
-  b.disabled=true; b.textContent='Sending…';
-  document.getElementById('berr').classList.remove('on');
-  try{
-    await save({kind:'brand',email:em,brief:brief.slice(0,4000),source:'landing-ink'});
-    document.getElementById('gate').classList.remove('on');
-    document.getElementById('bok').classList.add('on');
-  }catch(err){
-    document.getElementById('berr').classList.add('on');
-    b.disabled=false; b.textContent='Send plan';
-  }
-  return false;
 }
 
 /* ---------- modals ---------- */
