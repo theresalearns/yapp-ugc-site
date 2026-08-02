@@ -329,7 +329,7 @@ footer a:hover{color:#fff}
         </form>
         <div class="err" id="berr">Couldn't send that — try again.</div>
       </div>
-      <div class="ok" id="bok"><b>You're in.</b> Your brief is with the producer — expect the full plan by email within 24 hours.</div>
+      <div class="ok" id="bok"><b>You're in.</b> Your brief is with the producer — expect the full plan by email within 24 hours.<a class="btn btn-l" style="height:40px;font-size:13px;margin-top:12px" onclick="toFlow(1)">Open your plan &rarr;</a></div>
     </div>
   </div>
 </div></div>
@@ -425,7 +425,7 @@ footer a:hover{color:#fff}
     <h2>Send one brief. See what <em>comes back</em>.</h2>
     <p class="sub">Free, takes a minute. We onboard five brands a week.</p>
     <div class="row">
-      <a class="btn btn-w btn-lg" onclick="focusBrief()">Submit my brief</a>
+      <a class="btn btn-w btn-lg" onclick="toFlow(0)">Submit my brief</a>
       <a class="btn btn-o btn-lg" onclick="openCreator()">I'm a creator</a>
     </div>
   </div>
@@ -506,6 +506,12 @@ function detect(t){t=t.toLowerCase();
 
 let busy=false;
 function fill(t){const el=document.getElementById('bt');el.value=t;busy=false;run();}
+function toFlow(step){
+  var el=document.getElementById('bt'), t=(el&&el.value||'').trim();
+  var u='onboarding/?';
+  if(t) u+='brief='+encodeURIComponent(t.slice(0,600))+'&';
+  location.href=u+'step='+(step||0);
+}
 function focusBrief(){
   document.getElementById('bt').scrollIntoView({behavior:'smooth',block:'center'});
   setTimeout(()=>document.getElementById('bt').focus(),500);
