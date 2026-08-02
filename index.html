@@ -292,7 +292,7 @@ footer a:hover{color:#fff}
       <p class="lede">Render ad-ready videos from real human avatars within minutes.</p>
       <div class="search">
         <input id="bt" placeholder="e.g. hydration drink for gen z women on TikTok" onkeydown="if(event.key==='Enter')toFlow(0)">
-        <button id="run" onclick="toFlow(0)" aria-label="Start with this brief">→</button>
+        <button id="run" type="button" onclick="toFlow(0)" aria-label="Start with this brief">→</button>
       </div>
       <div class="chips"><span class="t">Try:</span>
         <span class="chip" onclick="fill('Skincare serum launch for gen z women on TikTok')">Skincare launch</span>
@@ -512,7 +512,6 @@ function focusBrief(){
 function run(){
   const el=document.getElementById('bt'), typed=el.value.trim(), txt=typed||SEED;
   if(busy)return; busy=true;
-  const btn=document.getElementById('run'); btn.disabled=true;
   if(typed) document.getElementById('bq').textContent=typed;
   document.getElementById('gate').classList.remove('on');
   document.getElementById('castwrap').style.display='none';
@@ -548,7 +547,7 @@ function run(){
     if(i<lines.length){i++;setTimeout(tick,i===4?900:1000)}
     else{
       stat.textContent='ready'; pst.textContent='plan ready';
-      setTimeout(function(){document.getElementById('gate').classList.add('on');btn.disabled=false;busy=false;},400);
+      setTimeout(function(){document.getElementById('gate').classList.add('on');busy=false;},400);
     }
   })();
 }
