@@ -122,8 +122,6 @@ h1 em{font-style:italic;color:var(--lavlt)}
 .pcard .rw{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:6px}
 .pcard .fo{font:500 11px var(--mono);color:var(--body)}
 .pcard .mt{font:600 10.5px var(--mono);color:var(--lav);background:#f2effc;padding:2px 7px;border-radius:999px;white-space:nowrap}
-.who2 .av{overflow:hidden}
-.who2 .av svg,.who2 .av img{width:100%;height:100%;object-fit:cover;display:block}
 .gate{margin-top:15px;padding-top:15px;border-top:1px solid var(--line2);display:none}
 .gate.on{display:block}
 .gate p{font-size:13px;color:var(--body);margin-bottom:10px}
@@ -165,14 +163,9 @@ h2.wide{max-width:none;white-space:nowrap}
 .tile .pl{position:absolute;top:15px;right:15px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
 .tile .pl:after{content:"";border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--ink);margin-left:2px}
 
-.tblwrap{overflow-x:auto;margin-top:36px}
-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
 th{text-align:left;font:500 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
    padding:0 14px 11px;border-bottom:1px solid #e2ddf8;font-weight:500}
 td{padding:13px 14px;border-bottom:1px solid var(--line2)}
-td.m{font-family:var(--mono);font-size:12.5px;color:var(--body)}
-.who2{display:flex;align-items:center;gap:9px}
-.who2 .av{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 10px var(--sans);color:#fff;flex-shrink:0}
 .pill{display:inline-flex;font:500 11px var(--mono);padding:3px 9px;border-radius:6px;white-space:nowrap}
 .pill.a{background:#e8f6f1;color:var(--teal)} .pill.p{background:#fdf3e2;color:#96660f} .pill.r{background:#fdeeec;color:#a8331f}
 
@@ -198,6 +191,8 @@ td.m{font-family:var(--mono);font-size:12.5px;color:var(--body)}
 .pc ul{list-style:none;margin-bottom:20px}
 .pc li{font-size:14px;color:var(--body);padding:5px 0 5px 18px;position:relative}
 .pc li:before{content:"—";position:absolute;left:0;color:#c3c1d4}
+.pnote{font-size:13.5px;color:var(--faint);margin-top:22px;text-align:center}
+.pnote a{color:var(--lav);cursor:pointer;border-bottom:1px solid #d8cffb}
 
 .faq{margin-top:34px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
@@ -281,7 +276,7 @@ footer a:hover{color:#fff}
   <nav><div class="wrap">
     <a class="logo inv" href="#"><img src="logo.png" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
     <div class="nl">
-      <a href="#how">How it works</a><a href="#ledger">Likeness Ledger</a><a href="#creators">Creators</a><a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a><a href="#creators">Creators</a><a href="#pricing">Pricing</a>
     </div>
     <div class="navr">
       <a class="btn btn-o" onclick="openAuth('in')">Sign in</a>
@@ -361,23 +356,6 @@ footer a:hover{color:#fff}
   </div>
 </div></section>
 
-<section class="pale" id="ledger"><div class="wrap">
-  <div class="lab">Likeness Ledger</div>
-  <h2>Every face licensed. Every render <em>logged</em>.</h2>
-  <p class="sub">Avatar tools rent you a model. Marketplaces rent you a person. Neither can tell you who consented to what — here the consent record and the render log are one system.</p>
-  <div class="tblwrap"><table>
-    <thead><tr><th>License</th><th>Creator</th><th>Status</th><th>Renders 30d</th><th>Platforms</th><th>Consent</th></tr></thead>
-    <tbody>
-      <tr><td class="m">YL-0007</td><td><span class="who2"><span class="av"><img src="f/maya.jpg" alt="" loading="lazy"></span>Maya S.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">212</td><td class="m">tiktok, reels</td><td class="m">2026-03 · on file</td></tr>
-      <tr><td class="m">YL-0012</td><td><span class="who2"><span class="av"><img src="f/jake.jpg" alt="" loading="lazy"></span>Jake R.</span></td><td><span class="pill a">active</span></td><td class="m">164</td><td class="m">tiktok, shorts</td><td class="m">2026-04 · on file</td></tr>
-      <tr><td class="m">YL-0018</td><td><span class="who2"><span class="av"><img src="f/camila.jpg" alt="" loading="lazy"></span>Camila T.</span></td><td><span class="pill a">active · exclusive</span></td><td class="m">147</td><td class="m">tiktok, reels</td><td class="m">2026-04 · on file</td></tr>
-      <tr><td class="m">YL-0023</td><td><span class="who2"><span class="av"><img src="f/leon.jpg" alt="" loading="lazy"></span>Leon K.</span></td><td><span class="pill p">paused by creator</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-05 · on file</td></tr>
-      <tr><td class="m">YL-0009</td><td><span class="who2"><span class="av"><img src="f/rio.jpg" alt="" loading="lazy"></span>Rio P.</span></td><td><span class="pill r">revoked</span></td><td class="m">0</td><td class="m">—</td><td class="m">2026-03 · ended</td></tr>
-    </tbody>
-  </table></div>
-  <p class="note">// sample rows. every delivered file carries its license id and an AI-content label.</p>
-</div></section>
-
 <section id="creators"><div class="wrap two">
   <div>
     <div class="lab">For creators</div>
@@ -392,10 +370,10 @@ footer a:hover{color:#fff}
   </div>
   <div class="payout">
     <div class="ph"><span>Payout · July</span><span class="pill a">paid</span></div>
-    <div class="amt">$1,860</div><div class="s2">61 videos used · 3 campaigns</div>
-    <div class="r"><span>Fintech — feature launch</span><em>$580</em></div>
-    <div class="r"><span>Skincare — spring series</span><em>$840</em></div>
-    <div class="r"><span>E-commerce — payday</span><em>$440</em></div>
+    <div class="amt">$1,856</div><div class="s2">232 videos used · 5 campaigns · $8 per use</div>
+    <div class="r"><span>Fintech — feature launch</span><em>$624</em></div>
+    <div class="r"><span>Skincare — spring series</span><em>$536</em></div>
+    <div class="r"><span>E-commerce — payday</span><em>$696</em></div>
   </div>
 </div></section>
 
@@ -404,13 +382,14 @@ footer a:hover{color:#fff}
   <h2>You pay for video, not <em>seats</em>.</h2>
   <p class="sub">Casting, licensing and the producer are included. No annual contract.</p>
   <div class="prices">
-    <div class="pc"><div class="t">Per brief</div><div class="v">$29 <small>/ video</small></div><p>For a first test.</p>
-      <ul><li>10 video minimum</li><li>3 avatars</li><li>First cut in 15 minutes</li></ul>
+    <div class="pc"><div class="t">Per brief</div><div class="v">$39 <small>/ video</small></div><p>For a first test.</p>
+      <ul><li>10 video minimum</li><li>Up to 3 cast members</li><li>First cut in 15 minutes</li><li>Rights-cleared files</li></ul>
       <a class="btn btn-s" onclick="focusBrief()">Start with a brief</a></div>
-    <div class="pc hl"><div class="t">Monthly</div><div class="v">$990 <small>/ month</small></div><p>For always-on ad testing.</p>
-      <ul><li>60 videos a month</li><li>Unlimited avatars</li><li>Hook and script permutations</li><li>Recast on performance</li></ul>
+    <div class="pc hl"><div class="t">Monthly</div><div class="v">$1,490 <small>/ month</small></div><p>For always-on ad testing.</p>
+      <ul><li>60 videos a month &mdash; $25 each</li><li>Unlimited cast</li><li>Hook and script permutations</li><li>Recast on performance</li><li>Priority queue</li></ul>
       <a class="btn btn-l" onclick="openAuth('up')">Get started</a></div>
   </div>
+  <p class="pnote">Every video ships rights-cleared, and the creator is paid for each use. Need more than 200 a month? <a onclick="focusBrief()">Talk to us</a>.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -454,7 +433,7 @@ footer a:hover{color:#fff}
 
 <footer><div class="wrap">
   <a class="logo inv" style="--h:20px" href="#"><img src="logo.png" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
-  <div class="fl"><a href="#how">How it works</a><a href="#ledger">Likeness Ledger</a><a href="#creators">Creators</a><a href="#pricing">Pricing</a><a href="https://yapp.ink" target="_blank" rel="noopener">Yapp</a></div>
+  <div class="fl"><a href="#how">How it works</a><a href="#creators">Creators</a><a href="#pricing">Pricing</a><a href="https://yapp.ink" target="_blank" rel="noopener">Yapp</a></div>
   <div class="cr">© 2026 Yapp · creator faces shown are AI-generated placeholders</div>
 </div></footer>
 
