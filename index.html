@@ -290,8 +290,8 @@ footer a:hover{color:#fff}
       <h1>Send a brief.<br>Get the <em>content</em>.</h1>
       <p class="lede">Render ad-ready videos from real human avatars within minutes.</p>
       <div class="search">
-        <input id="bt" placeholder="e.g. hydration drink for gen z women on TikTok" onkeydown="if(event.key==='Enter')run()">
-        <button id="run" onclick="run()" aria-label="Analyze brief">→</button>
+        <input id="bt" placeholder="e.g. hydration drink for gen z women on TikTok" onkeydown="if(event.key==='Enter')toFlow(0)">
+        <button id="run" onclick="toFlow(0)" aria-label="Start with this brief">→</button>
       </div>
       <div class="chips"><span class="t">Try:</span>
         <span class="chip" onclick="fill('Skincare serum launch for gen z women on TikTok')">Skincare launch</span>
@@ -444,7 +444,7 @@ footer a:hover{color:#fff}
     <div class="mh"><a class="logo" href="#"><img src="logo.png" alt="yapp ugc"><svg class="ugc" viewBox="0 0 3706 1560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#582af0" transform="translate(0 1118) scale(1 -1)"><path transform="translate(0 0)" d="M503 -14Q386 -14 298.5 38.0Q211 90 163.0 185.0Q115 280 115 406V1118H464V474Q464 380 512.5 326.5Q561 273 646 273Q704 273 746.5 297.5Q789 322 813.0 368.5Q837 415 837 480V1118H1186V0H858L852 282H867Q825 148 737.0 67.0Q649 -14 503 -14Z"/><path transform="translate(1240 0)" d="M630 -442Q484 -442 375.0 -405.0Q266 -368 198.5 -302.0Q131 -236 111 -149L414 -87Q424 -117 451.0 -142.5Q478 -168 522.0 -183.5Q566 -199 628 -199Q735 -199 792.5 -151.0Q850 -103 850 -3V195H823Q803 145 763.5 104.0Q724 63 663.5 39.0Q603 15 520 15Q397 15 295.5 72.5Q194 130 133.0 250.5Q72 371 72 559Q72 755 135.0 882.0Q198 1009 299.5 1070.5Q401 1132 519 1132Q608 1132 671.5 1102.0Q735 1072 776.5 1024.5Q818 977 839 926H849V1118H1194V25Q1194 -129 1122.5 -233.0Q1051 -337 924.0 -389.5Q797 -442 630 -442ZM639 271Q706 271 753.0 305.0Q800 339 825.0 404.5Q850 470 850 560Q850 652 825.0 719.0Q800 786 753.5 822.5Q707 859 639 859Q572 859 525.5 821.5Q479 784 455.0 717.0Q431 650 431 560Q431 470 455.0 405.0Q479 340 525.5 305.5Q572 271 639 271Z"/><path transform="translate(2487 0)" d="M634 -21Q459 -21 333.0 51.5Q207 124 139.5 253.5Q72 383 72 555Q72 728 139.5 857.5Q207 987 333.0 1059.5Q459 1132 634 1132Q741 1132 830.0 1104.0Q919 1076 986.0 1024.5Q1053 973 1094.5 899.5Q1136 826 1149 735L827 681Q819 725 802.5 759.0Q786 793 762.5 817.0Q739 841 707.5 853.0Q676 865 638 865Q571 865 524.0 828.5Q477 792 452.5 722.5Q428 653 428 557Q428 461 452.5 391.0Q477 321 524.0 283.5Q571 246 638 246Q677 246 708.0 258.5Q739 271 763.5 295.5Q788 320 804.5 355.5Q821 391 828 436L1150 384Q1137 290 1095.5 215.5Q1054 141 987.0 88.0Q920 35 830.5 7.0Q741 -21 634 -21Z"/></g></svg></a>
       <h3 id="atitle">Create your account</h3><p class="msub" id="asub">Which side of the platform are you on?</p></div>
     <div class="roles">
-      <a class="role" onclick="closeAuth();focusBrief()"><div class="ic">B</div><div><b>I'm a brand</b><span>Send briefs, get content back</span></div><span class="arr">→</span></a>
+      <a class="role" onclick="closeAuth();toFlow(0)"><div class="ic">B</div><div><b>I'm a brand</b><span>Send briefs, get content back</span></div><span class="arr">→</span></a>
       <a class="role" onclick="closeAuth();openCreator()"><div class="ic">C</div><div><b>I'm a creator</b><span>License your face, earn per use</span></div><span class="arr">→</span></a>
     </div>
     <p class="alt" id="aalt">Already have an account? <a onclick="openAuth('in')">Sign in</a></p>
